@@ -7,6 +7,12 @@ M.defaults = {
     bg = "#ffffff",
     force = true,
   },
+  commentColors = {
+    fg = "#757575",
+    bg = "#ffffff",
+    force = true,
+    italic = true,
+  },
   reversed_group = {},
 }
 
