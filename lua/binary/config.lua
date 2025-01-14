@@ -2,14 +2,25 @@ local M = {}
 
 M.defaults = {
   style = "system",
-  colors = {
+  lightColors = {
     fg = "#000000",
     bg = "#ffffff",
     force = true,
   },
-  commentColors = {
+  darkColors = {
+    fg = "#ffffff",
+    bg = "#000000",
+    force = true,
+  },
+  lightSpecialColors = {
     fg = "#757575",
     bg = "#ffffff",
+    force = true,
+    italic = true,
+  },
+  darkSpecialColors = {
+    fg = "#757575",
+    bg = "#000000",
     force = true,
     italic = true,
   },

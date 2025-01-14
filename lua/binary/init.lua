@@ -7,6 +7,7 @@ function M.load(opts)
   opts = require("binary.config").extend(opts)
 
   local system_bg = vim.o.background
+  print(system_bg)
   local style_bg = opts.style
   if opts.style == "system" then
     opts = require("binary.config").extend({ style = system_bg })

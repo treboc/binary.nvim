@@ -9,22 +9,17 @@ function M.setup(opts)
   vim.g.colors_name = "binary"
 
   local style = opts.style
-  local colors = opts.colors
-  local commentColors = opts.commentColors
-  if style == "dark" then
-    colors = {
-      fg = colors.bg,
-      bg = colors.fg,
-      force = colors.force,
-    }
+  local colors = {}
+  local specialColors = {}
 
-    commentColors = {
-      fg = commentColors.bg,
-      bg = colors.fg,
-      force = commentColors.force,
-      italic = commentColors.italic,
-    }
+  if style == "dark" then
+    colors = opts.darkColors
+    specialColors = opts.darkSpecialColors
+  else
+    colors = opts.lightColors
+    specialColors = opts.lightSpecialColors
   end
+
   local reversed_colors = { fg = colors.bg, bg = colors.fg, force = true }
 
   local all_groups = vim.api.nvim_get_hl(0, {})
@@ -32,9 +27,9 @@ function M.setup(opts)
     if group and type(group) == "string" then
       local groupString = tostring(group):lower()
       if groupString:find("comment") then
-        vim.api.nvim_set_hl(0, group, commentColors)
+        vim.api.nvim_set_hl(0, group, specialColors)
       elseif groupString:find("whitespace") then
-        vim.api.nvim_set_hl(0, group, commentColors)
+        vim.api.nvim_set_hl(0, group, specialColors)
       else
         vim.api.nvim_set_hl(0, group, colors)
       end
